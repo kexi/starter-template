@@ -1,0 +1,10 @@
+# Nix / direnv
+.direnv/
+result
+result-*
+
+# Editor / OS noise
+.DS_Store
+*.swp
+.idea/
+.vscode/

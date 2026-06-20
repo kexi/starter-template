@@ -1,0 +1,19 @@
+name: pinact
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/**
+      - .pinact.yaml
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: suzuki-shunsuke/pinact-action@896d595f299e71d65b9d28349d6956abe144390a # v3.0.0
+        with:
+          # Verify-only: fail the check when actions are unpinned instead of
+          # rewriting files or pushing a fix commit, so the PR is blocked.
+          fix: "false"
+          verify: "true"
