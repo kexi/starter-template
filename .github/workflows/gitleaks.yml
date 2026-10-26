@@ -14,3 +14,8 @@ jobs:
       - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0
         env:
           GITLEAKS_CONFIG: .gitleaks.toml
+          # Authenticates the action's GitHub API calls (owner lookup, PR
+          # commit listing). Unauthenticated calls share the runner IP's rate
+          # limit; when that is exhausted the owner lookup fails and the action
+          # demands a GITLEAKS_LICENSE even for this personal account.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
